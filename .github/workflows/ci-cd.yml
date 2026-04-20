@@ -18,7 +18,10 @@ jobs:
           distribution: 'temurin'
       - name: Lancer les tests
         working-directory: produit-service
-        run: ./mvnw test
+        run: |
+          chmod +x mvnw
+          ./mvnw test
+
   test-fournisseur-service:
     name: Tests fournisseur-service
     runs-on: ubuntu-latest
@@ -32,7 +35,10 @@ jobs:
           distribution: 'temurin'
       - name: Lancer les tests
         working-directory: fournisseur-service
-        run: ./mvnw test
+        run: |
+          chmod +x mvnw
+          ./mvnw test
+
   test-stock-service:
     name: Tests stock-service
     runs-on: ubuntu-latest
@@ -46,7 +52,10 @@ jobs:
           distribution: 'temurin'
       - name: Lancer les tests
         working-directory: stock-service
-        run: ./mvnw test
+        run: |
+          chmod +x mvnw
+          ./mvnw test
+
   build:
     name: Build tous les services
     runs-on: ubuntu-latest
@@ -61,10 +70,16 @@ jobs:
           distribution: 'temurin'
       - name: Build produit-service
         working-directory: produit-service
-        run: ./mvnw package -DskipTests
+        run: |
+          chmod +x mvnw
+          ./mvnw package -DskipTests
       - name: Build fournisseur-service
         working-directory: fournisseur-service
-        run: ./mvnw package -DskipTests
+        run: |
+          chmod +x mvnw
+          ./mvnw package -DskipTests
       - name: Build stock-service
         working-directory: stock-service
-        run: ./mvnw package -DskipTests
+        run: |
+          chmod +x mvnw
+          ./mvnw package -DskipTests
