@@ -1,0 +1,32 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      routes:
+        # Quand l'URL commence par /api/produits → envoie vers produit-service
+        - id: produit-service
+          uri: lb://PRODUIT-SERVICE     # lb = load balancer via Eureka
+          predicates:
+            - Path=/api/produits/**
+
+        # Quand l'URL commence par /api/stocks → envoie vers stock-service
+        - id: stock-service
+          uri: lb://STOCK-SERVICE
+          predicates:
+            - Path=/api/stocks/**
+
+        # Quand l'URL commence par /api/fournisseurs → envoie vers fournisseur-service
+        - id: fournisseur-service
+          uri: lb://FOURNISSEUR-SERVICE
+          predicates:
+            - Path=/api/fournisseurs/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

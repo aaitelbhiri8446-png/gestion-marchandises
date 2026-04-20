@@ -1,0 +1,24 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: PRODUIT-SERVICE   # nom majuscule pour Eureka
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/db_produits?createDatabaseIfNotExist=true
+    username: root
+    password: qdqmqitelbhiri
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update     # crée/met à jour les tables automatiquement
+    show-sql: true          # affiche les requêtes SQL dans la console
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true

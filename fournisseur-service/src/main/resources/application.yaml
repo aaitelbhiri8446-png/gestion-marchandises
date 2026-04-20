@@ -1,0 +1,17 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: FOURNISSEUR-SERVICE
+  datasource:
+    url: jdbc:mysql://localhost:3306/db_fournisseurs?createDatabaseIfNotExist=true
+    username: root
+    password: qdqmqitelbhiri
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
